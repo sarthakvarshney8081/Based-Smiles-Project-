@@ -1,18 +1,25 @@
 #!/bin/bash
 
-# Check for Node.js and npm
-if ! command -v node &>/dev/null; then
-  echo "Node.js is not installed. Please install it and try again."
-  exit 1
+# Add Privy App ID to the environment file
+ENV_FILE=".env"
+
+echo "Setting up the Privy App ID..."
+if [ ! -f "$ENV_FILE" ]; then
+  echo "Creating a new .env file..."
+  touch $ENV_FILE
 fi
 
-if ! command -v npm &>/dev/null; then
-  echo "npm is not installed. Please install it and try again."
-  exit 1
+# Add or update the App ID in the .env file
+if grep -q "NEXT_PUBLIC_PRIVY_APP_ID=" "$ENV_FILE"; then
+  sed -i 's/^NEXT_PUBLIC_PRIVY_APP_ID=.*/NEXT_PUBLIC_PRIVY_APP_ID=cm4gj3ngp03vh122koi0w1h5e/' "$ENV_FILE"
+else
+  echo "NEXT_PUBLIC_PRIVY_APP_ID=cm4gj3ngp03vh122koi0w1h5e" >>"$ENV_FILE"
 fi
+
+echo "Privy App ID configured successfully!"
 
 # Install dependencies
-echo "Installing dependencies..."
+echo "Installing project dependencies..."
 npm install
 
 # Run the development server
