@@ -23,7 +23,7 @@ echo "Configuring environment variables..."
 cat <<EOL > .env.local
 NEXT_PUBLIC_PRIVY_API_KEY=your-privy-api-key
 NEXT_PUBLIC_BASE_NETWORK_URL=https://base-network.example.com
-NEXT_PUBLIC_SMART_CONTRACT_ADDRESS=0x123456789abcdef
+NEXT_PUBLIC_SMART_CONTRACT_ADDRESS=0xc7b849FEFAA0874429242C54A73564e2Da3B3054
 NEXT_PUBLIC_COINBASE_API_KEY=your-coinbase-api-key
 EOL
 echo ".env.local file created. Please update it with your actual API keys and URLs."
